@@ -132,6 +132,7 @@ export default function Layout({ children, section }) {
       `}} />
 
       <script type="module" src="/src/js/web-components.js" />
+      <script type="module" src="/src/js/swipes.js" />
 
       <script dangerouslySetInnerHTML={{ __html:`
         window.addEventListener('appinstalled', (eve) => {
@@ -157,8 +158,8 @@ export default function Layout({ children, section }) {
               });
             }
           );
-          // Array.from(document.querySelectorAll('.link'))
-          //   .forEach(link => io.observe(link));
+          Array.from(document.querySelectorAll('.link'))
+            .forEach(link => io.observe(link));
 
         });
       `}} />

@@ -23,7 +23,7 @@ export default function Whislist() {
 
   useEffect(async () => {
     const wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
-    if (wishlist) {
+    if (wishlist && wishlist.length > 0) {
       const games = Array.from(wishlist).reverse().join(',');
       const data = await fetch(gameXboxURL(games)).then(res => res.json());
       if (data) {
