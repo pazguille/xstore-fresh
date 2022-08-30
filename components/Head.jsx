@@ -8,7 +8,7 @@ export default function Head({ children }) {
       <meta charset="utf-8" />
       <meta name="HandheldFriendly" content="True" />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover" />
-      <base href="http://localhost:3030/" />
+      {/* <base href="http://localhost:3030/" /> */}
       <base href="http://fresh.xstoregames.com/" />
 
       <link rel="stylesheet" href="./src/styles.css" />
@@ -16,8 +16,8 @@ export default function Head({ children }) {
       <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link rel="preconnect" href="https://api.xstoregames.com" />
       <link rel="preconnect" href="https://xbox-games-api.vercel.app" />
-      {/* <link rel="preconnect" href="https://www.dolarsi.com" />
-      <link rel="preconnect" href="https://media.rawg.io/" /> */}
+      <link rel="preconnect" href="https://media.rawg.io/" />
+      {/* <link rel="preconnect" href="https://www.dolarsi.com" />*/}
 
       <link rel="preload" as="font" href="./src/assets/bahnschrift.woff2" crossorigin="anonymous" />
       <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v7/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2" crossorigin="anonymous" />
