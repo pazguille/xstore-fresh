@@ -9,7 +9,7 @@ export default function Head({ children }) {
       <meta name="HandheldFriendly" content="True" />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover" />
       {/* <base href="http://localhost:3030/" /> */}
-      <base href="http://fresh.xstoregames.com/" />
+      <base href="https://fresh.xstoregames.com/" />
 
       <link rel="stylesheet" href="./src/styles.css" />
 

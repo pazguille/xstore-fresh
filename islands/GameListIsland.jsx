@@ -11,7 +11,6 @@ export default function GameListIsland({ section }) {
   useEffect(async () => {
     const games = await fetch(getXboxURL(section.type)).then(res => res.json());
     setGames(games);
-    return () => {};
   }, []);
 
   return (
