@@ -31,7 +31,6 @@ export default function Whislist() {
       }
     }
     setLoading(false);
-    return () => {};
   }, []);
 
   return (

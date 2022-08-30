@@ -12,4 +12,4 @@ export function render(ctx, render) {
   render();
 };
 
-await start(manifest, { port: 3030, render });
+await start(manifest, { render });

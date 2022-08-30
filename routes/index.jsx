@@ -10,6 +10,8 @@ import SectionWithIsland from '@/components/SectionWithIsland.jsx';
 import GamePassSection from '@/components/GamePassSection.jsx';
 import GoldSection from '@/components/GoldSection.jsx';
 
+import Counter from '@/islands/Counter.jsx';
+
 const belowTheFold = [
   {
     type: 'coming',
@@ -89,8 +91,9 @@ export default function Home(ctx) {
       <div className="home">
         <notification-prompt hidden></notification-prompt>
 
+        <Counter start={1} />
         <GameImportant game={hotsale} />
-
+        <Counter start={2} />
         {aboveTheFold.map((section) =>
           <Section section={section} key={section.type} />
         )}

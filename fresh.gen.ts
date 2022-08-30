@@ -13,12 +13,13 @@ import * as $7 from "./routes/news.jsx";
 import * as $8 from "./routes/search.jsx";
 import * as $9 from "./routes/wishlist.jsx";
 import * as $$0 from "./islands/CollectionList.jsx";
-import * as $$1 from "./islands/GameListIsland.jsx";
-import * as $$2 from "./islands/ShareButton.jsx";
-import * as $$3 from "./islands/Video.jsx";
-import * as $$4 from "./islands/VideoPlaylist.jsx";
-import * as $$5 from "./islands/WishToggle.jsx";
-import * as $$6 from "./islands/Wishlist.jsx";
+import * as $$1 from "./islands/Counter.jsx";
+import * as $$2 from "./islands/GameListIsland.jsx";
+import * as $$3 from "./islands/ShareButton.jsx";
+import * as $$4 from "./islands/Video.jsx";
+import * as $$5 from "./islands/VideoPlaylist.jsx";
+import * as $$6 from "./islands/WishToggle.jsx";
+import * as $$7 from "./islands/Wishlist.jsx";
 
 const manifest = {
   routes: {
@@ -35,12 +36,13 @@ const manifest = {
   },
   islands: {
     "./islands/CollectionList.jsx": $$0,
-    "./islands/GameListIsland.jsx": $$1,
-    "./islands/ShareButton.jsx": $$2,
-    "./islands/Video.jsx": $$3,
-    "./islands/VideoPlaylist.jsx": $$4,
-    "./islands/WishToggle.jsx": $$5,
-    "./islands/Wishlist.jsx": $$6,
+    "./islands/Counter.jsx": $$1,
+    "./islands/GameListIsland.jsx": $$2,
+    "./islands/ShareButton.jsx": $$3,
+    "./islands/Video.jsx": $$4,
+    "./islands/VideoPlaylist.jsx": $$5,
+    "./islands/WishToggle.jsx": $$6,
+    "./islands/Wishlist.jsx": $$7,
   },
   baseUrl: import.meta.url,
 };
