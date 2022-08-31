@@ -22,7 +22,7 @@ export default function GameDetail({ game }) {
           <h3 class="game-title">{game.title}</h3>
           <p class="game-by">by {game.developer || game.publisher}</p>
 
-          <WishToggle title={game.title} />
+          <WishToggle id={game.id} title={game.title} amount={game.price.amount} />
           <ShareButton title={game.title} />
 
           {game.game_pass ? <img class="game-pass" src="/src/assets/game-pass.svg" width="70" height="13" alt="Disponible en Game Pass" /> : null}
