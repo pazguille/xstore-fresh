@@ -15,15 +15,15 @@ export default function GameDetail({ game }) {
 
   const until = Math.ceil((Date.parse(new Date(game.price.ends)) - Date.parse(new Date())) / (24 * 3600 * 1000));
   return (
-    <article class="game-preview" style={{'--game-preview-url': `url(${img}?w=1000&q=70)`}}>
-      <Video game={game} />
+    <article class="game-preview" style={{'--game-preview-url': `url(${img}?w=1160&q=70)`}}>
+      <Video title={game.title} />
       <div>
         <div class="game-preview-info">
           <h3 class="game-title">{game.title}</h3>
           <p class="game-by">by {game.developer || game.publisher}</p>
 
-          <WishToggle game={game} />
-          <ShareButton game={game} />
+          <WishToggle title={game.title} />
+          <ShareButton title={game.title} />
 
           {game.game_pass ? <img class="game-pass" src="/src/assets/game-pass.svg" width="70" height="13" alt="Disponible en Game Pass" /> : null}
           {game.ea_play ? <img class="game-pass" src="/src/assets/ea-play.png" width="70" height="13" alt="Disponible en EA Play" /> : null}
@@ -57,7 +57,7 @@ export default function GameDetail({ game }) {
           <a href={`https://www.youtube.com/results?search_query=${game.title}+xbox+trailer`} target="_blank" rel="noreferrer noopener" class="game-preview-video" aria-label="Ver trailers en YouTube">
             <img width="25" height="32" loading="lazy" decoding="async" src="/src/assets/icons/play.svg" alt="" />
           </a>
-          <VideoPlaylist game={game} />
+          <VideoPlaylist title={game.title} />
         </div>
 
         <h4 class="visually-hidden">Descripción</h4>

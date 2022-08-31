@@ -5,11 +5,11 @@ import { h } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { getVideoURL, slugify } from '@/utils.js';
 
-export default function GameListIsland({ game }) {
+export default function GameListIsland({ title }) {
   const [video, setVideos] = useState(null);
 
   useEffect(async () => {
-    const videos = await fetch(getVideoURL(slugify(game.title))).then(res => res.json());
+    const videos = await fetch(getVideoURL(slugify(title))).then(res => res.json());
     setVideos(videos);
   }, []);
 

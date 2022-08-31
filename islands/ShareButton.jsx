@@ -2,12 +2,12 @@
 import { h } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 
-export default function ShareButton({ game }){
+export default function ShareButton({ title }){
   const $share = useRef(null);
 
   useEffect(() => {
     $share.current.show({
-      title: `${game.title} en XStore`,
+      title: `${title} en XStore`,
       url: window.location.href,
     });
   }, []);

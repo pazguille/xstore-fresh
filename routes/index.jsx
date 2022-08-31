@@ -15,29 +15,21 @@ const belowTheFold = [
     type: 'coming',
     title: '¡Mirá lo que se viene!',
     icon: '',
-    list: [],
-    skipitems: 0,
   },
   {
     type: 'best',
     title: 'Deberías jugarlos',
     icon: '',
-    list: [],
-    skipitems: 0,
   },
   {
     type: 'most',
     title: 'Los más jugados',
     icon: <img src="/src/assets/icons/chart.svg" width="24" height="24" />,
-    list: [],
-    skipitems: 0,
   },
   {
     type: 'free',
     title: 'Gratarola',
     icon: '',
-    list: [],
-    skipitems: 0,
   },
 ];
 
@@ -85,6 +77,11 @@ export default function Home(ctx) {
     <Layout section="">
       <Head>
         <link rel="preload" as="image" href={lcp} fetchpriority="high" />
+
+        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=free&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=most&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=best&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=coming&skipitems=0" crossorigin="anonymous" />
       </Head>
       <div className="home">
         <notification-prompt hidden></notification-prompt>

@@ -3,15 +3,14 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $0 from "./routes/__app.jsx";
-import * as $1 from "./routes/api/joke.js";
-import * as $2 from "./routes/collection/[collection].jsx";
-import * as $3 from "./routes/game/[game].jsx";
-import * as $4 from "./routes/gamepass/[collection].jsx";
-import * as $5 from "./routes/gold/[collection].jsx";
-import * as $6 from "./routes/index.jsx";
-import * as $7 from "./routes/news.jsx";
-import * as $8 from "./routes/search.jsx";
-import * as $9 from "./routes/wishlist.jsx";
+import * as $1 from "./routes/collection/[collection].jsx";
+import * as $2 from "./routes/game/[game].jsx";
+import * as $3 from "./routes/gamepass/[collection].jsx";
+import * as $4 from "./routes/gold/[collection].jsx";
+import * as $5 from "./routes/index.jsx";
+import * as $6 from "./routes/news.jsx";
+import * as $7 from "./routes/search.jsx";
+import * as $8 from "./routes/wishlist.jsx";
 import * as $$0 from "./islands/CollectionList.jsx";
 import * as $$1 from "./islands/GameListIsland.jsx";
 import * as $$2 from "./islands/ShareButton.jsx";
@@ -23,15 +22,14 @@ import * as $$6 from "./islands/Wishlist.jsx";
 const manifest = {
   routes: {
     "./routes/__app.jsx": $0,
-    "./routes/api/joke.js": $1,
-    "./routes/collection/[collection].jsx": $2,
-    "./routes/game/[game].jsx": $3,
-    "./routes/gamepass/[collection].jsx": $4,
-    "./routes/gold/[collection].jsx": $5,
-    "./routes/index.jsx": $6,
-    "./routes/news.jsx": $7,
-    "./routes/search.jsx": $8,
-    "./routes/wishlist.jsx": $9,
+    "./routes/collection/[collection].jsx": $1,
+    "./routes/game/[game].jsx": $2,
+    "./routes/gamepass/[collection].jsx": $3,
+    "./routes/gold/[collection].jsx": $4,
+    "./routes/index.jsx": $5,
+    "./routes/news.jsx": $6,
+    "./routes/search.jsx": $7,
+    "./routes/wishlist.jsx": $8,
   },
   islands: {
     "./islands/CollectionList.jsx": $$0,

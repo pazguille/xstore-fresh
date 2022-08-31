@@ -4,12 +4,12 @@ import { h } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 import { getVideoURL, slugify } from '@/utils.js';
 
-export default function Video({ game }) {
+export default function Video({ title }) {
   const $video = useRef(null);
 
   useEffect(async () => {
     if (!window.matchMedia('(prefers-reduced-motion)').matches || (navigator.connection && !navigator.connection.saveData)) {
-      const video = await fetch(getVideoURL(slugify(game.title))).then(res => res.json());
+      const video = await fetch(getVideoURL(slugify(title))).then(res => res.json());
       if (video && video.full) {
         $video.current
           .addEventListener('loadedmetadata', function() {

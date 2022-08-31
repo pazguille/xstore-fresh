@@ -31,7 +31,8 @@ export default function Detail({ data }) {
       <Head>
         <title>{`${game.title} | XStore`}</title>
         <meta name="description" content={`${game.title}: ${game.description.split('.')[0].replace(/\n/gi, '')}.`} />
-        <link rel="preload" as="image" href={lcp} fetchpriority="high" />
+        <link rel="preload" as="image" href={`${lcp}?w=1160&q=70`} fetchpriority="high" />
+        <link rel="preconnect" href="https://media.rawg.io/" />
       </Head>
       <div className="detail page page-on">
         <div className="detail-content page-content">
@@ -39,7 +40,7 @@ export default function Detail({ data }) {
         </div>
       </div>
 
-      <script dangerouslySetInnerHTML={{ __html:`
+      {/* <script dangerouslySetInnerHTML={{ __html:`
         window.addEventListener('load', () => {
           document.querySelector('.detail-content').addEventListener('click', (eve) => {
             if (eve.target.classList.contains('game-buy-now')) {
@@ -63,7 +64,7 @@ export default function Detail({ data }) {
             }
           });
         });
-      `}} />
+      `}} /> */}
     </Layout>
   )
 }
