@@ -2,30 +2,25 @@
 import { h } from 'preact';
 import * as Fresh from '$fresh/runtime.ts';
 
-export default function Head({ children }) {
+export default function Head() {
   return (
     <Fresh.Head>
       <meta charset="utf-8" />
       <meta name="HandheldFriendly" content="True" />
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover" />
-      {/* <base href="http://localhost:3030/" /> */}
+      {/* <base href="http://localhost:8000/" /> */}
       <base href="https://fresh.xstoregames.com/" />
 
       <link rel="stylesheet" href="./src/styles.css" />
 
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
       <link rel="preconnect" href="https://api.xstoregames.com" />
       <link rel="preconnect" href="https://xbox-games-api.vercel.app" />
-      <link rel="preconnect" href="https://media.rawg.io/" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+
       {/* <link rel="preconnect" href="https://www.dolarsi.com" />*/}
 
       <link rel="preload" as="font" href="./src/assets/bahnschrift.woff2" crossorigin="anonymous" />
       <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v7/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2" crossorigin="anonymous" />
-
-      <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=free&skipitems=0" crossorigin="anonymous" />
-      <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=most&skipitems=0" crossorigin="anonymous" />
-      <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=best&skipitems=0" crossorigin="anonymous" />
-      <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=coming&skipitems=0" crossorigin="anonymous" />
 
       <link rel="modulepreload" href="./src/js/web-components.js" />
       {/* <link rel="modulepreload" href="./src/js/utils.js" /> */}
