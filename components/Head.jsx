@@ -17,16 +17,10 @@ export default function Head() {
       <link rel="preconnect" href="https://xbox-games-api.vercel.app" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
 
-      {/* <link rel="preconnect" href="https://www.dolarsi.com" />*/}
-
       <link rel="preload" as="font" href="./src/assets/bahnschrift.woff2" crossorigin="anonymous" />
       <link rel="preload" as="font" href="https://fonts.gstatic.com/s/inter/v7/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7W0Q5nw.woff2" crossorigin="anonymous" />
 
       <link rel="modulepreload" href="./src/js/web-components.js" />
-      {/* <link rel="modulepreload" href="./src/js/utils.js" /> */}
-      {/* <link rel="modulepreload" href="./src/js/templates.js" />
-      <link rel="modulepreload" href="./src/js/app.js" />
-      <link rel="modulepreload" href="./src/js/swipes.js" /> */}
 
       <title>XStore: La tienda argenta de Xbox</title>
 
