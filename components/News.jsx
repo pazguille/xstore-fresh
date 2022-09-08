@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
 import { Html5Entities } from "https://deno.land/x/html_entities/mod.js";
 
 export default function News({ news }) {

@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
 import { slugify } from '@/utils.js';
 
 export default function GameImportant({ game }) {

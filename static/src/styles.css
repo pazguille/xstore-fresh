@@ -551,8 +551,16 @@ h2 img {
   background: var(--bg-xbox-dark-color) linear-gradient(var(--bg-xbox-dark-color) 5%, var(--bg-color) 15%) no-repeat;
 }
 
+.page-transition {
+  z-index: 3;
+}
+
 .page-on {
   transform: translateX(0);
+}
+
+.page-off {
+  opacity: 0;
 }
 
 .page-fixed {

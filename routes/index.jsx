@@ -1,6 +1,3 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { Fragment, h } from 'preact';
 import { getXboxURL } from '@/utils.js';
 import { Head } from '$fresh/runtime.ts';
 import Layout from '@/components/Layout.jsx';

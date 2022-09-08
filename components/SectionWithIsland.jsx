@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
 import GameListIsland from '@/islands/GameListIsland.jsx';
 
 export default function Section({ section }) {

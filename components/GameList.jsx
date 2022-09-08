@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
 import GameCardNew from '@/components/GameCardNew.jsx';
 import GameCardSoon from '@/components/GameCardSoon.jsx';
 import GameCard from '@/components/GameCard.jsx';

@@ -1,23 +1,23 @@
-/** @jsx h */
-import { h } from 'preact';
-
 import { useEffect, useRef } from 'preact/hooks';
-import { getVideoURL, slugify } from '@/utils.js';
+import { getVideoURL, slugify, videosSignal } from '@/utils.js';
 
 export default function Video({ title }) {
   const $video = useRef(null);
 
   useEffect(async () => {
+    const video = await fetch(getVideoURL(slugify(title))).then(res => res.json());
+    videosSignal.value = video;
+
     if (!window.matchMedia('(prefers-reduced-motion)').matches || (navigator.connection && !navigator.connection.saveData)) {
-      const video = await fetch(getVideoURL(slugify(title))).then(res => res.json());
       if (video && video.full) {
         $video.current
           .addEventListener('loadedmetadata', function() {
             this.toggleAttribute('hidden');
           });
-        $video.current.src = video.full;
+        $video.current.src = videosSignal.value.full;
       }
     }
+
     return () => {};
   }, []);
 

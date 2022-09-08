@@ -38,7 +38,6 @@ function toFixed(num) {
   return d ? r / m : r;
 }
 
-
 export const titles = {
   new : 'Salidos del horno',
   deals: 'Ahorrate unos mangos',
@@ -54,3 +53,6 @@ export const titles = {
   'gold-deals': 'Ofertas con Gold',
   'gold-free': 'Días gratis con Gold',
 };
+
+import { signal } from '@preact/signals';
+export const videosSignal = signal(null);

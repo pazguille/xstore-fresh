@@ -1,6 +1,3 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
-import { h } from 'preact';
 import Layout from '@/components/Layout.jsx';
 import Wishlist from '@/islands/Wishlist.jsx';
 

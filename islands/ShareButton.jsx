@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
 import { useEffect, useRef } from 'preact/hooks';
 
 export default function ShareButton({ title }){

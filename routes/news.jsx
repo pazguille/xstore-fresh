@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
 import { getXboxNewsURL } from '@/utils.js';
 import Layout from '@/components/Layout.jsx';
 import News from '@/components/News.jsx';

@@ -1,7 +1,5 @@
-/** @jsx h */
-import { h } from 'preact';
-
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect } from 'preact/hooks';
+import { useSignal } from '@preact/signals';
 import { gameXboxURL } from '@/utils.js';
 import GameCard from '@/components/GameCard.jsx';
 
@@ -18,8 +16,8 @@ function List({ games }) {
 }
 
 export default function Whislist() {
-  const [loading, setLoading] = useState(true);
-  const [wishCollection, setWish] = useState([]);
+  const loading = useSignal(true);
+  const wishCollection = useSignal([]);
 
   useEffect(async () => {
     const wishlist = JSON.parse(window.localStorage.getItem('wishlist'));
@@ -27,17 +25,17 @@ export default function Whislist() {
       const games = Array.from(wishlist).reverse().join(',');
       const data = await fetch(gameXboxURL(games)).then(res => res.json());
       if (data) {
-        setWish(data);
+        wishCollection.value = data;
       }
     }
-    setLoading(false);
+    loading.value = false;
   }, []);
 
   return (
     <div>
-      { loading ? <x-loader></x-loader> : null}
-      { wishCollection.length > 0 && <List games={wishCollection} /> }
-      { !loading && wishCollection.length === 0 && <EmptyWishlist /> }
+      { loading.value ? <x-loader></x-loader> : null}
+      { wishCollection.value.length > 0 && <List games={wishCollection.value} /> }
+      { !loading.value && wishCollection.value.length === 0 && <EmptyWishlist /> }
     </div>
   );
 }

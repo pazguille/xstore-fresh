@@ -1,5 +1,3 @@
-/** @jsx h */
-/** @jsxFrag Fragment */
 import { Fragment, h } from 'preact';
 import GamePrice from '@/components/GamePrice.jsx';
 import WishToggle from '@/islands/WishToggle.jsx';

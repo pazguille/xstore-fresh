@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
 import { convertDollar } from '@/utils.js';
 
 export default function GamePrice({ game }) {

@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
 import { slugify } from '@/utils.js';
 import GamePrice from '@/components/GamePrice.jsx';
 

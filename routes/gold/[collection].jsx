@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
 import { Head } from '$fresh/runtime.ts';
 import { getXboxURL } from '@/utils.js';
 import Layout from '@/components/Layout.jsx';

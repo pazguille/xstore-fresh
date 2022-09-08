@@ -1,9 +1,9 @@
-/** @jsx h */
-import { h, createContext } from 'preact';
+import { createContext } from 'preact';
 
 import Head from '@/components/Head.jsx';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
+import PageTransition from '@/islands/PageTransition.jsx';
 
 export const AppContext = createContext({
   section: '',
@@ -14,6 +14,7 @@ export default function Layout({ children, section }) {
     <AppContext.Provider value={{ section }}>
       <Head />
       <Header />
+      <PageTransition />
       <main>
         {/* <div class="splash-loading" hidden>
           <svg width="100px" height="100px" viewbox="-20 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg">

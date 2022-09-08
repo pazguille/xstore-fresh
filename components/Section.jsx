@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
 import GameList from '@/components/GameList.jsx';
 
 export default function Section({ section }) {

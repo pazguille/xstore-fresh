@@ -1,5 +1,3 @@
-/** @jsx h */
-import { h } from 'preact';
 import GameInfo from '@/components/GameInfo.jsx';
 
 export default function GameCardSoon({ game }) {

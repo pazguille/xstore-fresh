@@ -1,23 +1,21 @@
-/** @jsx h */
-import { h } from 'preact';
-
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect } from 'preact/hooks';
+import { useSignal } from '@preact/signals';
 import { getXboxURL } from '@/utils.js';
 import GameList from '@/components/GameList.jsx';
 
 export default function GameListIsland({ section }) {
-  const [games, setGames] = useState(null);
+  const gamesCollection = useSignal(null);
 
   useEffect(async () => {
     const games = await fetch(getXboxURL(section.type)).then(res => res.json());
     requestIdleCallback(() => {
-      setGames(games);
+      gamesCollection.value = games;
     });
   }, []);
 
   return (
     <div>
-      {games && <GameList section={{ ...section, list: games }} />}
+      {gamesCollection.value && <GameList section={{ ...section, list: gamesCollection.value }} />}
     </div>
   );
 }
