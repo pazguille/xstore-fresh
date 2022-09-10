@@ -5,7 +5,9 @@ export default function Head() {
     <Fresh.Head>
       <meta charset="utf-8" />
       <meta name="HandheldFriendly" content="True" />
-      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover" />
+      {/* <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, viewport-fit=cover" /> */}
+      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover" />
+      {/* <base href="http://192.168.0.148:8000/" /> */}
       {/* <base href="http://localhost:8000/" /> */}
       <base href="https://fresh.xstoregames.com/" />
 
