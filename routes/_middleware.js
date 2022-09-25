@@ -5,7 +5,7 @@ export async function handler(req, ctx) {
     if (accept.includes('text/html')) {
       res.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
 
-    } else if (accept.includes('image/*') || req.url.includes('.woff2'))
+    } else if (accept.includes('image/*') || req.url.includes('.woff2')) {
       res.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
     }
   }
