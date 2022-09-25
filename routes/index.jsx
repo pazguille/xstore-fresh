@@ -3,32 +3,32 @@ import { Head } from '$fresh/runtime.ts';
 import Layout from '@/components/Layout.jsx';
 import GameImportant from '@/components/GameImportant.jsx';
 import Section from '@/components/Section.jsx';
-import SectionWithIsland from '@/components/SectionWithIsland.jsx';
+// import SectionWithIsland from '@/components/SectionWithIsland.jsx';
 import GamePassSection from '@/components/GamePassSection.jsx';
 import GoldSection from '@/components/GoldSection.jsx';
 
-const belowTheFold = [
-  {
-    type: 'coming',
-    title: '¡Mirá lo que se viene!',
-    icon: '',
-  },
-  {
-    type: 'best',
-    title: 'Deberías jugarlos',
-    icon: '',
-  },
-  {
-    type: 'most',
-    title: 'Los más jugados',
-    icon: <img src="/src/assets/icons/chart.svg" width="24" height="24" />,
-  },
-  {
-    type: 'free',
-    title: 'Gratarola',
-    icon: '',
-  },
-];
+// const belowTheFold = [
+//   {
+//     type: 'coming',
+//     title: '¡Mirá lo que se viene!',
+//     icon: '',
+//   },
+//   {
+//     type: 'best',
+//     title: 'Deberías jugarlos',
+//     icon: '',
+//   },
+//   {
+//     type: 'most',
+//     title: 'Los más jugados',
+//     icon: <img src="/src/assets/icons/chart.svg" width="24" height="24" />,
+//   },
+//   {
+//     type: 'free',
+//     title: 'Gratarola',
+//     icon: '',
+//   },
+// ];
 
 export const handler = {
   async GET(req, ctx) {
@@ -39,14 +39,37 @@ export const handler = {
         title: 'Salidos del horno',
         icon: '',
         list: [],
-        skipitems: 0,
       },
       {
         type: 'deals',
         title: 'Ahorrate unos mangos',
         icon: <img src="/src/assets/icons/tag.svg" width="24" height="24" />,
         list: [],
-        skipitems: 0,
+      },
+
+      {
+        type: 'coming',
+        title: '¡Mirá lo que se viene!',
+        icon: '',
+        list: [],
+      },
+      {
+        type: 'best',
+        title: 'Deberías jugarlos',
+        icon: '',
+        list: [],
+      },
+      {
+        type: 'most',
+        title: 'Los más jugados',
+        icon: <img src="/src/assets/icons/chart.svg" width="24" height="24" />,
+        list: [],
+      },
+      {
+        type: 'free',
+        title: 'Gratarola',
+        icon: '',
+        list: [],
       },
     ];
 
@@ -75,20 +98,24 @@ export default function Home(ctx) {
       <Head>
         <link rel="preload" as="image" href={lcp} fetchpriority="high" />
 
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=free&skipitems=0" crossorigin="anonymous" />
+        {/* <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=free&skipitems=0" crossorigin="anonymous" />
         <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=most&skipitems=0" crossorigin="anonymous" />
         <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=best&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=coming&skipitems=0" crossorigin="anonymous" />
+        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=coming&skipitems=0" crossorigin="anonymous" /> */}
       </Head>
       <div className="home">
         <notification-prompt hidden></notification-prompt>
 
         <GameImportant game={hotsale} />
-        {aboveTheFold.map((section) =>
-          <Section section={section} key={section.type} />
+        {aboveTheFold.map((section, index) =>
+          <>
+            <Section section={section} key={section.type} />
+            { index === 3 && <GamePassSection /> }
+            { index === 5 && <GoldSection /> }
+          </>
         )}
 
-        {
+        {/* {
           belowTheFold.map((section, index) =>
             <>
               <SectionWithIsland section={section} key={section.type} />
@@ -96,7 +123,7 @@ export default function Home(ctx) {
               { index === 3 && <GoldSection /> }
             </>
           )
-        }
+        } */}
       </div>
 
       <script dangerouslySetInnerHTML={{ __html:`
