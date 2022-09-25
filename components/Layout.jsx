@@ -1,4 +1,5 @@
 import { createContext } from 'preact';
+import { asset } from '$fresh/runtime.ts';
 
 import Head from '@/components/Head.jsx';
 import Header from '@/components/Header.jsx';
@@ -105,7 +106,7 @@ export default function Layout({ children, section }) {
         try {
           if (navigator.serviceWorker) {
             navigator.serviceWorker
-              .register('./sw.js', { scope: '/' })
+              .register('/sw.js', { scope: '/' })
               .then((reg) => {
                 console.log('Registration succeeded. Scope is ' + reg.scope);
               }).catch((error) => {
@@ -132,7 +133,7 @@ export default function Layout({ children, section }) {
         }
       `}} />
 
-      <script type="module" src="/src/js/web-components.js" />
+      <script type="module" src={asset("/src/js/web-components.js")} />
 
       <script dangerouslySetInnerHTML={{ __html:`
         window.addEventListener('appinstalled', (eve) => {
@@ -140,7 +141,7 @@ export default function Layout({ children, section }) {
         });
 
         window.addEventListener('load', () => {
-          import('/src/js/swipes.js');
+          import('${asset('/src/js/swipes.js')}');
 
           document.querySelector('#search').addEventListener('submit', (eve) => {
             gtag('event', 'search', {
