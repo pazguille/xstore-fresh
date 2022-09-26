@@ -11,7 +11,8 @@ export default function GameImportant({ game }) {
         <a id={`detail-${game.id}`} href={`/game/${slugify(game.title)}_${game.id}`} class="link">{game.title}</a>
       </h2>
       <span class="game-important-tag game-price-off">{game.price.off}% OFF</span>
-      <img class="game-img" width="330" height="330" alt="" fetchpriority="high" decoding="async" src={`${img}?w=720&q=70`} />
+      <img class="game-img" width="330" height="330" alt="" fetchpriority="high" decoding="async" src={game.base64} />
+      {/* <img class="game-img" width="330" height="330" alt="" fetchpriority="high" decoding="async" src={`${img}?w=720&q=70`} /> */}
     </article>
   );
 }
