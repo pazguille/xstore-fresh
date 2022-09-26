@@ -86,23 +86,23 @@ export const handler = {
     const lcp = hotsale.images.featurepromotionalsquareart ?
     hotsale.images.featurepromotionalsquareart.url : hotsale.images.boxart?.url;
 
-    const img = await fetch(lcp + '?w=720&q=70').then(res => res.arrayBuffer());
-    const u8 = new Uint8Array(img);
-    const b64encoded = btoa(String.fromCharCode.apply(null, u8));
-    const base64 = `data:image/webp;base64,${b64encoded}`;
-    hotsale.base64 = base64;
+    // const img = await fetch(lcp + '?w=720&q=70').then(res => res.arrayBuffer());
+    // const u8 = new Uint8Array(img);
+    // const b64encoded = btoa(String.fromCharCode.apply(null, u8));
+    // const base64 = `data:image/webp;base64,${b64encoded}`;
+    // hotsale.base64 = base64;
 
     return ctx.render({ aboveTheFold, hotsale, lcp: lcp + '?w=720&q=70' });
   },
 };
 
 export default function Home(ctx) {
-  const { lcp, hotsale, aboveTheFold, base64 } = ctx.data;
+  const { lcp, hotsale, aboveTheFold } = ctx.data;
 
   return (
     <Layout section="">
       <Head>
-        {/* <link rel="preload" as="image" href={lcp} fetchpriority="high" /> */}
+        <link rel="preload" as="image" href={lcp} fetchpriority="high" />
 
         {/* <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=free&skipitems=0" crossorigin="anonymous" />
         <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=most&skipitems=0" crossorigin="anonymous" />
