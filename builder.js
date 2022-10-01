@@ -1,9 +1,11 @@
 import { extname, toFileUrl, fromFileUrl, join, dirname } from "https://deno.land/std@0.150.0/path/mod.ts";
-import * as esbuild from 'https://deno.land/x/esbuild@v0.15.8/mod.js'
+import * as esbuildWasm from "https://deno.land/x/esbuild@v0.15.8/wasm.js";
+import * as esbuildNative from "https://deno.land/x/esbuild@v0.15.8/mod.js";
 import { denoPlugin } from "https://deno.land/x/esbuild_deno_loader@0.5.2/mod.ts";
 import manifest from './fresh.gen.ts';
 
 export async function bundle() {
+  const esbuild = Deno.run === undefined ? esbuildWasm : esbuildNative;
   const absWorkingDir = Deno.cwd();
   const baseUrl = new URL("./", manifest.baseUrl).href;
   const importMapURL = new URL('./import_map.json', manifest.baseUrl);
