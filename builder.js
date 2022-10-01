@@ -29,7 +29,14 @@ export async function bundle() {
     entryPoints[`island-${island.id}`] = island.url;
   }
 
-  esbuild.initialize({});
+  if (Deno.run === undefined) {
+    await esbuild.initialize({
+      wasmURL: "https://deno.land/x/esbuild@v0.14.51/esbuild.wasm",
+      worker: false,
+    });
+  } else {
+    await esbuild.initialize({});
+  }
 
   await esbuild.build({
     bundle: true,
@@ -55,6 +62,8 @@ export async function bundle() {
     `%c 🏝  ${islands.length} is-lands generated.`,
     'color: blue; font-weight: bold',
   );
+
+  esbuild.stop();
 
   return;
 }
