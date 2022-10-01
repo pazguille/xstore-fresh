@@ -1,6 +1,6 @@
 import { extname, toFileUrl, fromFileUrl, join, dirname } from "https://deno.land/std@0.150.0/path/mod.ts";
-import * as esbuildWasm from "https://deno.land/x/esbuild@v0.14.51/wasm.js";
-import * as esbuildNative from "https://deno.land/x/esbuild@v0.14.51/mod.js";
+import * as esbuildWasm from "https://deno.land/x/esbuild@v0.15.10/wasm.js";
+import * as esbuildNative from "https://deno.land/x/esbuild@v0.15.10/mod.js";
 import { denoPlugin } from "https://deno.land/x/esbuild_deno_loader@0.5.2/mod.ts";
 import manifest from './fresh.gen.ts';
 
@@ -9,7 +9,7 @@ export const cache = new Map();
 export async function bundle() {
   const esbuild = Deno.run === undefined ? esbuildWasm : esbuildNative;
   const opts = Deno.run === undefined ? {
-    wasmURL: "https://deno.land/x/esbuild@v0.14.51/esbuild.wasm",
+    wasmURL: "https://deno.land/x/esbuild@v0.15.10/esbuild.wasm",
     worker: false,
   } : {};
   const absWorkingDir = Deno.cwd();

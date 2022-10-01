@@ -13,6 +13,6 @@ export function render(ctx, render) {
   render();
 };
 
-await bundle();
+// await bundle();
 
 await start(manifest, { render });

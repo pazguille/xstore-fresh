@@ -1,6 +1,6 @@
 {
   "tasks": {
-    "start": "deno run -A --watch=static/,components/,is-land/,routes/ dev.ts"
+    "start": "deno run -A --watch=static/,components/,is-land/,islands/,routes/ dev.ts"
   },
   "importMap": "./import_map.json",
   "compilerOptions": {
