@@ -1,3 +1,6 @@
+static/islands
+.DS_Store
+
 # Logs
 logs
 *.log

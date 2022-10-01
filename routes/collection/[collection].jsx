@@ -1,7 +1,8 @@
 import { Head } from '$fresh/runtime.ts';
 import { getXboxURL } from '@/utils.js';
 import Layout from '@/components/Layout.jsx';
-import CollectionList from '@/islands/CollectionList.jsx';
+import Island from '@/components/Island.jsx';
+import CollectionList from '@/is-lands/CollectionList.jsx';
 import { titles } from '@/utils.js';
 
 export const handler = {
@@ -23,7 +24,9 @@ export default function Collection({ data }) {
       <div class="collection list page page-on">
         <div class="collection-content page-content">
           <h2>{titles[collection]}</h2>
-          <CollectionList type={collection} games={games} />
+          <Island whenIdle>
+            <CollectionList type={collection} games={games} />
+          </Island>
         </div>
       </div>
     </Layout>

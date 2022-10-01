@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout.jsx';
-import Wishlist from '@/islands/Wishlist.jsx';
+import Island from '@/components/Island.jsx';
+import Wishlist from '@/is-lands/Wishlist.jsx';
 
 export default function WhislistPage() {
   return (
@@ -8,7 +9,9 @@ export default function WhislistPage() {
         <notification-prompt hidden></notification-prompt>
         <div class="wish-content page-content">
           <h2><img src="/src/assets/icons/heart.svg" width="24" height="24" /> Favoritos</h2>
-          <Wishlist />
+          <Island whenVisible>
+            <Wishlist />
+          </Island>
         </div>
       </div>
     </Layout>

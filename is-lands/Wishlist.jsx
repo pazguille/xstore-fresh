@@ -15,7 +15,7 @@ function List({ games }) {
   );
 }
 
-export default function Whislist() {
+export default function Wishlist() {
   const loading = useSignal(true);
   const wishCollection = useSignal([]);
 

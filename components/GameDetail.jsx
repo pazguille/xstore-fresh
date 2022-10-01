@@ -1,9 +1,9 @@
-import { Fragment, h } from 'preact';
 import GamePrice from '@/components/GamePrice.jsx';
-import WishToggle from '@/islands/WishToggle.jsx';
-import ShareButton from '@/islands/ShareButton.jsx';
-import Video from '@/islands/Video.jsx';
-import VideoPlaylist from '@/islands/VideoPlaylist.jsx';
+import Island from '@/components/Island.jsx';
+import WishToggle from '@/is-lands/WishToggle.jsx';
+import ShareButton from '@/is-lands/ShareButton.jsx';
+import Video from '@/is-lands/Video.jsx';
+import VideoPlaylist from '@/is-lands/VideoPlaylist.jsx';
 
 export default function GameDetail({ game }) {
   const img = game.images.titledheroart ?
@@ -14,14 +14,21 @@ export default function GameDetail({ game }) {
   const until = Math.ceil((Date.parse(new Date(game.price.ends)) - Date.parse(new Date())) / (24 * 3600 * 1000));
   return (
     <article class="game-preview" style={{'--game-preview-url': `url(${img}?w=1160&q=70)`}}>
-      <Video title={game.title} />
+      <Island whenIdle>
+        <Video title={game.title} />
+      </Island>
       <div>
         <div class="game-preview-info">
           <h3 class="game-title">{game.title}</h3>
           <p class="game-by">by {game.developer || game.publisher}</p>
 
-          <WishToggle id={game.id} title={game.title} amount={game.price.amount} />
-          <ShareButton title={game.title} />
+          <Island whenIdle>
+            <WishToggle id={game.id} title={game.title} amount={game.price.amount} />
+          </Island>
+
+          <Island whenIdle>
+            <ShareButton title={game.title} />
+          </Island>
 
           {game.game_pass ? <img class="game-pass" src="/src/assets/game-pass.svg" width="70" height="13" alt="Disponible en Game Pass" /> : null}
           {game.ea_play ? <img class="game-pass" src="/src/assets/ea-play.png" width="70" height="13" alt="Disponible en EA Play" /> : null}
@@ -55,7 +62,9 @@ export default function GameDetail({ game }) {
           <a href={`https://www.youtube.com/results?search_query=${game.title}+xbox+trailer`} target="_blank" rel="noreferrer noopener" class="game-preview-video" aria-label="Ver trailers en YouTube">
             <img width="25" height="32" loading="lazy" decoding="async" src="/src/assets/icons/play.svg" alt="" />
           </a>
-          <VideoPlaylist title={game.title} />
+          <Island whenVisible>
+            <VideoPlaylist title={game.title} />
+          </Island>
         </div>
 
         <h4 class="visually-hidden">Descripción</h4>

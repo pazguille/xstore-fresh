@@ -4,7 +4,8 @@ import { asset } from '$fresh/runtime.ts';
 import Head from '@/components/Head.jsx';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
-import PageTransition from '@/islands/PageTransition.jsx';
+import Island from '@/components/Island.jsx';
+import PageTransition from '@/is-lands/PageTransition.jsx';
 
 export const AppContext = createContext({
   section: '',
@@ -15,7 +16,9 @@ export default function Layout({ children, section }) {
     <AppContext.Provider value={{ section }}>
       <Head />
       <Header />
-      <PageTransition />
+      <Island whenIdle>
+        <PageTransition />
+      </Island>
       <main>
         {/* <div class="splash-loading" hidden>
           <svg width="100px" height="100px" viewbox="-20 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -134,6 +137,7 @@ export default function Layout({ children, section }) {
       `}} />
 
       <script type="module" src={asset("/src/js/web-components.js")} />
+      <script type="module" src={asset("/islands/island-main.js")} />
 
       <script dangerouslySetInnerHTML={{ __html:`
         window.addEventListener('appinstalled', (eve) => {
@@ -141,8 +145,6 @@ export default function Layout({ children, section }) {
         });
 
         window.addEventListener('load', () => {
-          import('${asset('/src/js/swipes.js')}');
-
           document.querySelector('#search').addEventListener('submit', (eve) => {
             gtag('event', 'search', {
               search_term: eve.target.elements[0].value,

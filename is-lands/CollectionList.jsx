@@ -6,7 +6,7 @@ import GameCard from '@/components/GameCard.jsx';
 
 const LIMIT = 10;
 
-export default function Collection({ type, games }) {
+export default function CollectionList({ type, games }) {
   const $collection = useRef(null);
   const gamesCollection = useSignal(games);
   const skip = useSignal(LIMIT);

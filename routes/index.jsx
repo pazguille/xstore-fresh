@@ -1,5 +1,6 @@
 import { getXboxURL } from '@/utils.js';
 import { Head } from '$fresh/runtime.ts';
+import { asset } from '$fresh/runtime.ts';
 import Layout from '@/components/Layout.jsx';
 import GameImportant from '@/components/GameImportant.jsx';
 import Section from '@/components/Section.jsx';
@@ -86,11 +87,11 @@ export const handler = {
     const lcp = hotsale.images.featurepromotionalsquareart ?
     hotsale.images.featurepromotionalsquareart.url : hotsale.images.boxart?.url;
 
-    // const img = await fetch(lcp + '?w=720&q=70').then(res => res.arrayBuffer());
-    // const u8 = new Uint8Array(img);
+    // const res = await fetch(lcp + '?w=720&q=70');
+    // const buff = await res.arrayBuffer();
+    // const u8 = new Uint8Array(buff);
     // const b64encoded = btoa(String.fromCharCode.apply(null, u8));
-    // const base64 = `data:image/webp;base64,${b64encoded}`;
-    // hotsale.base64 = base64;
+    // const base64 = `data:${res.headers.get('content-type')};base64,${b64encoded}`;
 
     return ctx.render({ aboveTheFold, hotsale, lcp: lcp + '?w=720&q=70' });
   },
@@ -134,6 +135,7 @@ export default function Home(ctx) {
 
       <script dangerouslySetInnerHTML={{ __html:`
         window.addEventListener('load', () => {
+          import('${asset('/src/js/swipes.js')}');
           document.body.addEventListener('click', (eve) => {
             if (eve.target.classList.contains('next')) {
               eve.target.parentNode.scrollBy(660, 0);
