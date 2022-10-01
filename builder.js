@@ -6,6 +6,10 @@ import manifest from './fresh.gen.ts';
 
 export async function bundle() {
   const esbuild = Deno.run === undefined ? esbuildWasm : esbuildNative;
+  const opts = Deno.run === undefined ? {
+    wasmURL: "https://deno.land/x/esbuild@v0.15.8/esbuild.wasm",
+    worker: false,
+  } : {};
   const absWorkingDir = Deno.cwd();
   const baseUrl = new URL("./", manifest.baseUrl).href;
   const importMapURL = new URL('./import_map.json', manifest.baseUrl);
@@ -31,14 +35,7 @@ export async function bundle() {
     entryPoints[`island-${island.id}`] = island.url;
   }
 
-  if (Deno.run === undefined) {
-    await esbuild.initialize({
-      wasmURL: "https://deno.land/x/esbuild@v0.14.51/esbuild.wasm",
-      worker: false,
-    });
-  } else {
-    await esbuild.initialize({});
-  }
+  await esbuild.initialize(opts);
 
   await esbuild.build({
     bundle: true,
