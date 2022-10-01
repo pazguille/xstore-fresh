@@ -4,6 +4,8 @@ import * as esbuildNative from "https://deno.land/x/esbuild@v0.14.51/mod.js";
 import { denoPlugin } from "https://deno.land/x/esbuild_deno_loader@0.5.2/mod.ts";
 import manifest from './fresh.gen.ts';
 
+export const cache = new Map();
+
 export async function bundle() {
   const esbuild = Deno.run === undefined ? esbuildWasm : esbuildNative;
   const opts = Deno.run === undefined ? {
@@ -37,13 +39,13 @@ export async function bundle() {
 
   await esbuild.initialize(opts);
 
-  await esbuild.build({
+  const bundle = await esbuild.build({
     bundle: true,
     entryPoints,
     format: "esm",
     metafile: true,
     minify: true,
-    outdir: "static/islands",
+    outdir: "islands",
     absWorkingDir,
     outfile: "",
     platform: "neutral",
@@ -52,17 +54,23 @@ export async function bundle() {
     splitting: true,
     target: ["chrome99", "firefox99", "safari15"],
     treeShaking: true,
-    write: true,
+    write: false,
     jsx: 'automatic',
     jsxImportSource: 'preact',
   });
+
+  const absDirUrlLength = toFileUrl(absWorkingDir).href.length;
+  for (const file of bundle.outputFiles) {
+    cache.set(
+      toFileUrl(file.path).href.substring(absDirUrlLength),
+      file.contents,
+    );
+  }
 
   console.log(
     `%c 🏝  ${islands.length} is-lands generated.`,
     'color: blue; font-weight: bold',
   );
-
-  esbuild.stop();
 
   return;
 }
