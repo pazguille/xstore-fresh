@@ -6,7 +6,7 @@ class Loader extends HTMLElement {
       <style>
         .x-loader {
           animation: xboxloader infinite 1.5s linear;
-          border: #FFF 3px solid;
+          border: #FFF 5px solid;
           border-radius:50%;
           box-sizing: border-box;
           height: 20px;
@@ -436,7 +436,9 @@ class InstallButton extends HTMLButtonElement {
   }
 
   _onClick() {
-    this._deferredPrompt.prompt();
+    if (this._deferredPrompt) {
+      this._deferredPrompt.prompt();
+    }
   }
 }
 window.customElements.define('install-button', InstallButton, { extends: 'button' });

@@ -8,7 +8,32 @@
   "theme_color": "#072523",
   "background_color": "#072523",
   "scope": "/",
-  "prefer_related_applications": true,
+  "lang": "es",
+  "prefer_related_applications": false,
+  "orientation": "portrait",
+  "categories": ["shopping", "news"],
+  "screenshots": [
+    {
+      "src": "/src/assets/screenshots-1.jpg",
+      "sizes": "320x640",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/src/assets/screenshots-2.jpg",
+      "sizes": "320x640",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/src/assets/screenshots-3.jpg",
+      "sizes": "320x640",
+      "type": "image/jpg"
+    },
+    {
+      "src": "/src/assets/screenshots-4.jpg",
+      "sizes": "320x640",
+      "type": "image/jpg"
+    }
+  ],
   "icons": [
     {
       "src": "/src/assets/manifest-icon-192.maskable.png",
