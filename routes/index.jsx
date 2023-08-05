@@ -4,32 +4,11 @@ import { asset } from '$fresh/runtime.ts';
 import Layout from '@/components/Layout.jsx';
 import GameImportant from '@/components/GameImportant.jsx';
 import Section from '@/components/Section.jsx';
-// import SectionWithIsland from '@/components/SectionWithIsland.jsx';
+import SectionWithIsland from '@/components/SectionWithIsland.jsx';
+import SupportSection from '@/components/SupportSection.jsx';
 import GamePassSection from '@/components/GamePassSection.jsx';
 import GoldSection from '@/components/GoldSection.jsx';
-
-// const belowTheFold = [
-//   {
-//     type: 'coming',
-//     title: '¡Mirá lo que se viene!',
-//     icon: '',
-//   },
-//   {
-//     type: 'best',
-//     title: 'Deberías jugarlos',
-//     icon: '',
-//   },
-//   {
-//     type: 'most',
-//     title: 'Los más jugados',
-//     icon: <img src="/src/assets/icons/chart.svg" width="24" height="24" />,
-//   },
-//   {
-//     type: 'free',
-//     title: 'Gratarola',
-//     icon: '',
-//   },
-// ];
+import MarketplaceIsland from '../islands/MarketplaceIsland.jsx';
 
 export const handler = {
   async GET(req, ctx) {
@@ -43,34 +22,57 @@ export const handler = {
       },
       {
         type: 'deals',
-        title: 'Ahorrate unos mangos',
+        title: 'Ahorrate unos pesos',
         icon: <img src="/src/assets/icons/tag.svg" width="24" height="24" />,
         list: [],
       },
 
+      // {
+      //   type: 'coming',
+      //   title: '¡Mirá lo que se viene!',
+      //   icon: '',
+      //   list: [],
+      // },
+      // {
+      //   type: 'best',
+      //   title: 'Deberías jugarlos',
+      //   icon: '',
+      //   list: [],
+      // },
+      // {
+      //   type: 'most',
+      //   title: 'Los más jugados',
+      //   icon: <img src="/src/assets/icons/chart.svg" width="24" height="24" />,
+      //   list: [],
+      // },
+      // {
+      //   type: 'free',
+      //   title: 'Gratarola',
+      //   icon: '',
+      //   list: [],
+      // },
+    ];
+
+    const belowTheFold = [
       {
         type: 'coming',
         title: '¡Mirá lo que se viene!',
         icon: '',
-        list: [],
       },
       {
         type: 'best',
         title: 'Deberías jugarlos',
         icon: '',
-        list: [],
       },
       {
         type: 'most',
         title: 'Los más jugados',
         icon: <img src="/src/assets/icons/chart.svg" width="24" height="24" />,
-        list: [],
       },
       {
         type: 'free',
         title: 'Gratarola',
         icon: '',
-        list: [],
       },
     ];
 
@@ -93,44 +95,49 @@ export const handler = {
     // const b64encoded = btoa(String.fromCharCode.apply(null, u8));
     // const base64 = `data:${res.headers.get('content-type')};base64,${b64encoded}`;
 
-    return ctx.render({ aboveTheFold, hotsale, lcp: lcp + '?w=720&q=70' });
+    return ctx.render({ aboveTheFold, belowTheFold, hotsale, lcp: lcp + '?w=720&q=70' });
   },
 };
 
 export default function Home(ctx) {
-  const { lcp, hotsale, aboveTheFold } = ctx.data;
+  const { lcp, hotsale, aboveTheFold, belowTheFold } = ctx.data;
 
   return (
     <Layout section="">
       <Head>
         <link rel="preload" as="image" href={lcp} fetchpriority="high" />
 
-        {/* <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=free&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=most&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=best&skipitems=0" crossorigin="anonymous" />
-        <link rel="preload" as="fetch" href="https://api.xstoregames.com/api/games?list=coming&skipitems=0" crossorigin="anonymous" /> */}
+        <link rel="prefetch" href="https://api.xstoregames.com/api/games?list=coming&skipitems=0&lang=es&store=ar" crossorigin="anonymous" />
+        <link rel="prefetch" href="https://api.xstoregames.com/api/games?list=best&skipitems=0&lang=es&store=ar" crossorigin="anonymous" />
+        <link rel="prefetch" href="https://api.xstoregames.com/api/games?list=most&skipitems=0&lang=es&store=ar" crossorigin="anonymous" />
+        <link rel="prefetch" href="https://api.xstoregames.com/api/games?list=free&skipitems=0&lang=es&store=ar" crossorigin="anonymous" />
+        <link rel="prefetch" href="https://api.mercadolibre.com/sites/MLA/search?category=MLA455245&limit=20" crossorigin="anonymous" />
       </Head>
       <div className="home">
         <notification-prompt hidden></notification-prompt>
 
         <GameImportant game={hotsale} />
+
         {aboveTheFold.map((section, index) =>
           <>
             <Section section={section} key={section.type} />
-            { index === 3 && <GamePassSection /> }
+            { index === 1 && <SupportSection store="ar" /> }
+            {/* { index === 2 && <GamePassSection /> }
             { index === 5 && <GoldSection /> }
+            { index === 5 && <MarketplaceIsland /> } */}
           </>
         )}
 
-        {/* {
+        {
           belowTheFold.map((section, index) =>
             <>
               <SectionWithIsland section={section} key={section.type} />
               { index === 0 && <GamePassSection /> }
               { index === 3 && <GoldSection /> }
+              { index === 3 && <MarketplaceIsland /> }
             </>
           )
-        } */}
+        }
       </div>
 
       <script dangerouslySetInnerHTML={{ __html:`

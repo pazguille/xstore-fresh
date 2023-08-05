@@ -5,14 +5,12 @@ import Video from '@/islands/Video.jsx';
 import VideoPlaylist from '@/islands/VideoPlaylist.jsx';
 
 export default function GameDetail({ game }) {
-  const img = game.images.titledheroart ?
-    (game.images.titledheroart.url || game.images.titledheroart[0].url)
-    : game.images.screenshot ? game.images.screenshot[0].url
-    : game.images.superheroart.url;
+  const img = game.lcp;
 
   const until = Math.ceil((Date.parse(new Date(game.price.ends)) - Date.parse(new Date())) / (24 * 3600 * 1000));
   return (
-    <article class="game-preview" style={{'--game-preview-url': `url(${img}?w=1160&q=70)`}}>
+    <article class="game-preview">
+      <img class="game-img" src={`${img}?w=1160&q=70`} alt="" fetchpriority="high" decoding="async" width="100%" />
       <Video title={game.title} />
       <div>
         <div class="game-preview-info">

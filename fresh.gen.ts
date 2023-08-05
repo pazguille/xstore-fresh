@@ -2,7 +2,6 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import config from "./deno.json" assert { type: "json" };
 import * as $0 from "./routes/__app.jsx";
 import * as $1 from "./routes/_middleware.js";
 import * as $2 from "./routes/collection/[collection].jsx";
@@ -15,12 +14,13 @@ import * as $8 from "./routes/search.jsx";
 import * as $9 from "./routes/wishlist.jsx";
 import * as $$0 from "./islands/CollectionList.jsx";
 import * as $$1 from "./islands/GameListIsland.jsx";
-import * as $$2 from "./islands/PageTransition.jsx";
-import * as $$3 from "./islands/ShareButton.jsx";
-import * as $$4 from "./islands/Video.jsx";
-import * as $$5 from "./islands/VideoPlaylist.jsx";
-import * as $$6 from "./islands/WishToggle.jsx";
-import * as $$7 from "./islands/Wishlist.jsx";
+import * as $$2 from "./islands/MarketplaceIsland.jsx";
+import * as $$3 from "./islands/PageTransition.jsx";
+import * as $$4 from "./islands/ShareButton.jsx";
+import * as $$5 from "./islands/Video.jsx";
+import * as $$6 from "./islands/VideoPlaylist.jsx";
+import * as $$7 from "./islands/WishToggle.jsx";
+import * as $$8 from "./islands/Wishlist.jsx";
 
 const manifest = {
   routes: {
@@ -38,15 +38,15 @@ const manifest = {
   islands: {
     "./islands/CollectionList.jsx": $$0,
     "./islands/GameListIsland.jsx": $$1,
-    "./islands/PageTransition.jsx": $$2,
-    "./islands/ShareButton.jsx": $$3,
-    "./islands/Video.jsx": $$4,
-    "./islands/VideoPlaylist.jsx": $$5,
-    "./islands/WishToggle.jsx": $$6,
-    "./islands/Wishlist.jsx": $$7,
+    "./islands/MarketplaceIsland.jsx": $$2,
+    "./islands/PageTransition.jsx": $$3,
+    "./islands/ShareButton.jsx": $$4,
+    "./islands/Video.jsx": $$5,
+    "./islands/VideoPlaylist.jsx": $$6,
+    "./islands/WishToggle.jsx": $$7,
+    "./islands/Wishlist.jsx": $$8,
   },
   baseUrl: import.meta.url,
-  config,
 };
 
 export default manifest;

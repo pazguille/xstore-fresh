@@ -15,7 +15,7 @@ export default function Layout({ children, section }) {
     <AppContext.Provider value={{ section }}>
       <Head />
       <Header />
-      <PageTransition />
+      {/* <PageTransition /> */}
       <main>
         {/* <div class="splash-loading" hidden>
           <svg width="100px" height="100px" viewbox="-20 0 150 100" fill="none" xmlns="http://www.w3.org/2000/svg">
