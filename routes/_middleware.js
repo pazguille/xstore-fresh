@@ -11,10 +11,21 @@
 
 // }
 
-export async function handler(req, ctx) {
+import { getPageFromURL } from '@/utils.js';
 
+export async function handler(req, ctx) {
   const accept = req.headers.get('accept');
+
+  if (accept) {
+    if (accept.includes('text/html')) {
+      const { store, lang } = getPageFromURL(req.url);
+      ctx.state.lang = lang;
+      ctx.state.store = store;
+    }
+  }
+
   const res = await ctx.next();
+
   if (accept) {
     if (accept.includes('image/*') || req.url.includes('.woff2')) {
       res.headers.set('Cache-Control', 'public, max-age=31536000, immutable');

@@ -101,9 +101,10 @@ export const handler = {
 
 export default function Home(ctx) {
   const { lcp, hotsale, aboveTheFold, belowTheFold } = ctx.data;
+  const { lang, store } = ctx.state;
 
   return (
-    <Layout section="">
+    <Layout section="" lang={lang} store={store}>
       <Head>
         <link rel="preload" as="image" href={lcp} fetchpriority="high" />
 

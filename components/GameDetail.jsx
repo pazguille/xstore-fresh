@@ -20,8 +20,8 @@ export default function GameDetail({ game }) {
           <WishToggle id={game.id} title={game.title} amount={game.price.amount} />
           <ShareButton title={game.title} />
 
-          {game.game_pass ? <img class="game-pass" src="/src/assets/game-pass.svg" width="70" height="13" alt="Disponible en Game Pass" /> : null}
-          {game.ea_play ? <img class="game-pass" src="/src/assets/ea-play.png" width="70" height="13" alt="Disponible en EA Play" /> : null}
+          {game.game_pass ? <img class="game-pass" src="/src/assets/game-pass.svg" width="70" height="13" alt="Disponible en Game Pass" loading="lazy" decoding="async" /> : null}
+          {game.ea_play ? <img class="game-pass" src="/src/assets/ea-play.png" width="70" height="13" alt="Disponible en EA Play" loading="lazy" decoding="async" /> : null}
 
           <GamePrice game={game} />
 

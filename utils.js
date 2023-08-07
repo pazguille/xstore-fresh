@@ -1,5 +1,5 @@
-const lang = 'es';
-const store = 'ar';
+export const lang = 'es';
+export const store = 'ar';
 
 export const getXboxURL = (list, skipitems = 0) => `https://api.xstoregames.com/api/games?list=${list}&skipitems=${skipitems}&lang=${lang}&store=${store}`;
 export const searchXboxURL = (query) => `https://api.xstoregames.com/api/search?q=${query}&lang=${lang}&store=${store}`;
@@ -14,12 +14,17 @@ export const getMarketplaceItemsURL = (limit = 20) => `https://api.mercadolibre.
 export function getPageFromURL(url) {
   const { pathname, searchParams } = new URL(url);
   let pathSplit = pathname.split('/');
-  pathSplit = pathSplit.filter(p => !['', `${store}-store`].includes(p));
+  pathSplit = pathSplit.filter(p => !['', '-store'].includes(p));
+
+  const lang = 'es';
+  let store = pathname.split('/').filter(p => p.includes('-store'));
+  store = store.length ? store[0].split('-store')[0] : 'ar';
+
   const page = pathSplit[0] || 'home';
   const id = pathSplit[1];
   const gameId = pathSplit[1] ? pathSplit[1].split('_')[1] : null;
 
-  return { id, gameId, page, searchParams };
+  return { id, gameId, page, searchParams, lang, store };
 }
 
 export function slugify(str) {

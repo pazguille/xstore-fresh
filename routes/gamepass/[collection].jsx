@@ -26,7 +26,7 @@ export default function GamePass({ data }) {
           <h2>{titles[collection]}</h2>
           {games.length ? <ul>{games.map((game, index) => (
             <li key={index} >
-              <GameCard game={game} />
+              <GameCard game={game} lazy={ index!==0 } />
             </li>
           ))}</ul> : <EmptyList />}
         </div>

@@ -35,7 +35,7 @@ export default function CollectionList({ type, games }) {
     <ul ref={$collection}>
       {gamesCollection.value.map((game, index) => (
         <li key={index}>
-          <GameCard game={game} />
+          <GameCard game={game} lazy={ index!==0 } />
         </li>
       ))}
     </ul>

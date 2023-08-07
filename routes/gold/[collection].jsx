@@ -20,13 +20,14 @@ export default function Gold({ data }) {
     <Layout>
       <Head>
         <title>{`${titles[collection]} | XStore`}</title>
+
       </Head>
       <div class="collection list page page-on">
         <div class="collection-content page-content">
           <h2>{titles[collection]}</h2>
           {games.length ? <ul>{games.map((game, index) => (
             <li key={index} >
-              <GameCard game={game} />
+              <GameCard game={game} lazy={ index!==0 } />
             </li>
           ))}</ul> : <EmptyList />}
         </div>

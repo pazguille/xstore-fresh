@@ -4,9 +4,9 @@ import Layout from '@/components/Layout.jsx';
 import GameCard from '@/components/GameCard.jsx';
 import EmptyList from '@/components/EmptyList.jsx';
 
-function fetchSearchGames(query) {
+function fetchSearchGames(query, lang, store) {
   const params = new URLSearchParams({
-    market: 'es-ar',
+    market: `${lang}-${store}`,
     clientId: '7F27B536-CF6B-4C65-8638-A0F8CBDFCA65',
     sources: 'DCatAll-Products',
     filter: '+ClientType:StoreWeb',
@@ -34,7 +34,7 @@ export const handler = {
   async GET(req, ctx) {
     const url = new URL(req.url);
     const q = url.searchParams.get('q');
-    const games = await fetchSearchGames(q);
+    const games = await fetchSearchGames(q, ctx.state.lang, ctx.state.store);
     return ctx.render({ q, games });
   },
 };
@@ -52,7 +52,7 @@ export default function Search({ data }) {
           <h2>Resultados para "{q}"</h2>
           {games.length ? <ul>{games.map((game, index) => (
             <li key={index} >
-              <GameCard game={game} />
+              <GameCard game={game} lazy={ index!==0 } />
             </li>
           ))}</ul> : <EmptyList />}
         </div>
