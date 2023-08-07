@@ -19,7 +19,7 @@ export default function Layout({ children, section, lang, store }) {
       <Header />
       {/* <PageTransition /> */}
       <main>
-        <div class="splash-loading" hidden>
+        {/* <div class="splash-loading" hidden>
           <svg width="80" height="80" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="195" cy="125" r="38.7" fill="#9AA495"/>
             <circle cx="125" cy="195" r="38.7" fill="#50AF62"/>
@@ -45,7 +45,7 @@ export default function Layout({ children, section, lang, store }) {
               });
             }
           });
-        `}} />
+        `}} /> */}
         {children}
       </main>
       <Footer />
