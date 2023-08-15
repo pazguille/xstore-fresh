@@ -164,12 +164,27 @@ export default function Layout({ children, section, lang, store }) {
           //   });
           // });
 
+          function hasPrefetch() {
+            const link = document.createElement('link');
+            return link.relList && link.relList.supports && link.relList.supports('prefetch');
+          }
+
+          function viaPrefetch(url) {
+            document.head.insertAdjacentHTML('beforeend', '<link rel="prefetch" href="'+ url +'" />');
+          }
+
+          function viaFetch(url) {
+            fetch(url, {credentials: 'include'});
+          }
+
+          const prefetch = hasPrefetch() ? viaPrefetch : viaFetch;
+
           const io = new IntersectionObserver(
             async (entries) => {
               entries.forEach(function (entry) {
                 if (entry.isIntersecting) {
                   requestIdleCallback(() => {
-                    document.head.insertAdjacentHTML('beforeend', '<link rel="prefetch" href="'+ entry.target.href +'" />');
+                    prefetch(entry.target.href);
                     io.unobserve(entry.target);
                   });
                 }
