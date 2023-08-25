@@ -1,23 +1,15 @@
 import { Head } from '$fresh/runtime.ts';
 import { getGamePassURL } from '@/utils.js';
-import Layout from '@/components/Layout.jsx';
 import GameCard from '@/components/GameCard.jsx';
 import EmptyList from '@/components/EmptyList.jsx';
 import { titles } from '@/utils.js';
 
-export const handler = {
-  async GET(req, ctx) {
-    const { collection } = ctx.params;
-    const games = await fetch(getGamePassURL(collection, 0)).then(res => res.json());
-    return ctx.render({ collection, games });
-  },
-};
-
-export default function GamePass({ data }) {
-  const { collection, games } = data;
+export default async function GamePass(req, ctx) {
+  const { collection } = ctx.params;
+  const games = await fetch(getGamePassURL(collection, 0)).then(res => res.json());
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>{`${titles[collection]} | XStore`}</title>
       </Head>
@@ -31,6 +23,6 @@ export default function GamePass({ data }) {
           ))}</ul> : <EmptyList />}
         </div>
       </div>
-    </Layout>
+    </>
   )
 }

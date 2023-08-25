@@ -6,15 +6,20 @@ import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
 import PageTransition from '@/islands/PageTransition.jsx';
 
+import { getPageFromURL } from '@/utils.js';
+
 export const AppContext = createContext({
   section: '',
   lang: '',
   store: '',
+  back: false,
 });
 
-export default function Layout({ children, section, lang, store }) {
+export default async function Layout(req, { Component, state }) {
+  const { store, lang, section, back } = state;
+
   return (
-    <AppContext.Provider value={{ section, lang, store }}>
+    <AppContext.Provider value={{ section, lang, store, back }}>
       <Head />
       <Header />
       {/* <PageTransition /> */}
@@ -46,7 +51,7 @@ export default function Layout({ children, section, lang, store }) {
             }
           });
         `}} /> */}
-        {children}
+        <Component />
       </main>
       <Footer />
 
@@ -174,7 +179,23 @@ export default function Layout({ children, section, lang, store }) {
           }
 
           function viaFetch(url) {
-            fetch(url, {credentials: 'include'});
+            fetch(url, {
+              credentials: 'include',
+              headers: {
+                accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+              },
+            });
+          }
+
+          function hasPrerender() {
+            return HTMLScriptElement.supports && HTMLScriptElement.supports('speculationrules');
+          }
+
+          function prerender(url) {
+            const s = document.createElement('script');
+            s.type = 'speculationrules';
+            s.text = '{"prerender":[{"source": "list","urls": ["'+ url +'"]}]}';
+            document.head.appendChild(s);
           }
 
           const prefetch = hasPrefetch() ? viaPrefetch : viaFetch;

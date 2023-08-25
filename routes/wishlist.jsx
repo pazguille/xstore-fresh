@@ -1,9 +1,8 @@
-import Layout from '@/components/Layout.jsx';
 import Wishlist from '@/islands/Wishlist.jsx';
 
 export default function WhislistPage() {
   return (
-    <Layout section="wishlist">
+    <>
       <div class="wish list page page-fixed page-on">
         <notification-prompt hidden></notification-prompt>
         <div class="wish-content page-content">
@@ -11,6 +10,6 @@ export default function WhislistPage() {
           <Wishlist />
         </div>
       </div>
-    </Layout>
+    </>
   )
 }

@@ -1,23 +1,16 @@
 import { Head } from '$fresh/runtime.ts';
 import { getXboxNewsURL } from '@/utils.js';
-import Layout from '@/components/Layout.jsx';
 import News from '@/components/News.jsx';
 
-export const handler = {
-  async GET(req, ctx) {
-    const news = await fetch(getXboxNewsURL()).then(res => res.json());
-    news.map(n => {
-      n.image = n.image.replace('1200%2C675', '670%2C380')
-      return n;
-    });
-    return ctx.render(news);
-  },
-};
+export default async function NewsPage() {
+  const news = await fetch(getXboxNewsURL()).then(res => res.json());
+  news.map(n => {
+    n.image = n.image.replace('1200%2C675', '670%2C380')
+    return n;
+  });
 
-export default function NewsPage({ data }) {
-  const news = data;
   return (
-    <Layout section="news">
+    <>
       <Head>
         <link rel="preload" as="image" href={news[0].image} fetchpriority="high" />
       </Head>
@@ -33,6 +26,6 @@ export default function NewsPage({ data }) {
           </ul>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }

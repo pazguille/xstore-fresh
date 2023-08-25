@@ -1,4 +1,9 @@
+import { useContext } from 'preact/hooks';
+import { AppContext } from '@/routes/_layout.jsx';
+
 export default function Header() {
+  const { back } = useContext(AppContext);
+
   return (
     <header>
       <h1>
@@ -13,7 +18,7 @@ export default function Header() {
         </a>
       </h1>
 
-      <button
+      {!back ? <button
         is="install-button"
         id="install-btn"
         class="header-btn install-btn"
@@ -24,17 +29,16 @@ export default function Header() {
           <svg width="16" height="16" viewBox="0 0 24 24" fill="#9AA495" aria-hidden="true"><path d="M18 15v3H6v-3H4v3c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2v-3h-2z"></path><path d="m17 11.5-1.4-1.4-2.6 2.6V4h-2v8.7L8.4 10 7 11.5l5 5z"></path></svg>
           Instalar
         </span>
-      </button>
+      </button> : null}
 
-      <button
+      {back ? <button
         is="back-button"
         id="page-back-btn"
         class="page-back-btn header-btn"
         aria-label="Volver para atrás"
-        hidden
       >
         <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M14.3 18.7a1 1 0 0 0 1.4-1.4l-1.4 1.4ZM9 12l-.7-.7a1 1 0 0 0 0 1.4L9 12Zm6.7-5.3a1 1 0 0 0-1.4-1.4l1.4 1.4Zm0 10.6-6-6-1.4 1.4 6 6 1.4-1.4Zm-6-4.6 6-6-1.4-1.4-6 6 1.4 1.4Z" fill="#9AA495"/></svg>
-      </button>
+      </button> : null}
 
       <x-toggle-collapse id="search-collapse">
         <button class="search-btn header-btn" aria-label="Buscar" slot="trigger">

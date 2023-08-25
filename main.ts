@@ -8,11 +8,12 @@ import { start } from "$fresh/server.ts";
 import manifest from "./fresh.gen.ts";
 // import { bundle } from "./builder.js";
 
-export function render(ctx, render) {
-  ctx.lang = 'es-AR';
-  render();
-};
+// export function render(ctx, render) {
+//   ctx.lang = 'es-AR';
+//   render();
+// };
 
 // await bundle();
 
-await start(manifest, { render });
+// await start(manifest, { render });
+await start(manifest);

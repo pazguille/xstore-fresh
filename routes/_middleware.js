@@ -11,18 +11,18 @@
 
 // }
 
-import { getPageFromURL } from '@/utils.js';
+// import { getPageFromURL } from '@/utils.js';
 
 export async function handler(req, ctx) {
   const accept = req.headers.get('accept');
 
-  if (accept) {
-    if (accept.includes('text/html')) {
-      const { store, lang } = getPageFromURL(req.url);
-      ctx.state.lang = lang;
-      ctx.state.store = store;
-    }
-  }
+  // if (accept) {
+  //   if (accept.includes('text/html')) {
+  //     const { store, lang } = getPageFromURL(req.url);
+  //     ctx.state.lang = lang;
+  //     ctx.state.store = store;
+  //   }
+  // }
 
   const res = await ctx.next();
 

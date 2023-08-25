@@ -1,6 +1,5 @@
 import { Head } from '$fresh/runtime.ts';
 import { gameXboxURL } from '@/utils.js';
-import Layout from '@/components/Layout.jsx';
 import GameCard from '@/components/GameCard.jsx';
 import EmptyList from '@/components/EmptyList.jsx';
 
@@ -43,7 +42,7 @@ export default function Search({ data }) {
   const { q, games } = data;
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>{`${q} | XStore`}</title>
       </Head>
@@ -57,6 +56,6 @@ export default function Search({ data }) {
           ))}</ul> : <EmptyList />}
         </div>
       </div>
-    </Layout>
+    </>
   )
 }

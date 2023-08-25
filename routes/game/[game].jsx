@@ -1,37 +1,22 @@
 import { Head } from '$fresh/runtime.ts';
 import { gameXboxURL, slugify } from '@/utils.js';
-import Layout from '@/components/Layout.jsx';
 import GameDetail from '@/components/GameDetail.jsx';
 
-export const handler = {
-  async GET(req, ctx) {
-    const gameId = ctx.params.game.split('_')[1];
-
-    if (!gameId) {
-      return Response.redirect(new URL(req.url).origin, 307);
-    }
-
-    const game = await fetch(gameXboxURL(gameId)).then(res => res.json()).then(game => game[0]);
-    game.lcp = game.images.titledheroart ?
-      (game.images.titledheroart.url || game.images.titledheroart[0].url)
-      : game.images.screenshot ? game.images.screenshot[0].url
-      : game.images.superheroart.url;
-
-    return ctx.render({ game, url: req.url });
-  },
-};
-
-export default function Detail({ data }) {
-  const { game, url } = data;
+export default async  function Detail(req, ctx) {
+  const game = await fetch(gameXboxURL(ctx.state.gameId)).then(res => res.json()).then(game => game[0]);
+  game.lcp = game.images.titledheroart ?
+    (game.images.titledheroart.url || game.images.titledheroart[0].url)
+    : game.images.screenshot ? game.images.screenshot[0].url
+    : game.images.superheroart.url;
 
   return (
-    <Layout>
+    <>
       <Head>
         <title>{`${game.title} | XStore`}</title>
         <meta name="description" content={`${game.title}: ${game.description.split('.')[0].replace(/\n/gi, '')}.`} />
         <link rel="preload" as="image" href={`${game.lcp}?w=1160&q=70`} fetchpriority="high" />
         <link rel="preconnect" href="https://media.rawg.io/" />
-        <link rel="canonical" href={`${url}/game/${slugify(game.title)}_${game.id}`} />
+        <link rel="canonical" href={`${req.url}/game/${slugify(game.title)}_${game.id}`} />
       </Head>
       <div className="detail page page-on">
         <div className="detail-content page-content">
@@ -64,6 +49,6 @@ export default function Detail({ data }) {
           });
         });
       `}} /> */}
-    </Layout>
+    </>
   )
 }

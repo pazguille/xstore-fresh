@@ -1,11 +1,11 @@
 import { useContext } from 'preact/hooks';
-import { AppContext } from '@/components/Layout.jsx';
+import { AppContext } from '@/routes/_layout.jsx';
 
 export default function Footer() {
   const { section } = useContext(AppContext);
 
   return (
-    <footer data-active={section}>
+    <footer data-active={section === 'home' ? '' : section}>
       <nav>
         <ul>
           <li>
