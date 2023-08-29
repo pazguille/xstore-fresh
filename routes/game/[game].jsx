@@ -4,10 +4,14 @@ import GameDetail from '@/components/GameDetail.jsx';
 
 export default async  function Detail(req, ctx) {
   const game = await fetch(gameXboxURL(ctx.state.gameId)).then(res => res.json()).then(game => game[0]);
-  game.lcp = game.images.titledheroart ?
+  game.lcp = (game.images.titledheroart ?
     (game.images.titledheroart.url || game.images.titledheroart[0].url)
     : game.images.screenshot ? game.images.screenshot[0].url
-    : game.images.superheroart.url;
+    : (game.images.superheroart?.url || game.images.boxart?.url)).replace('https:https:', 'https:');
+
+  if (['CFQ7TTC0KHS0', 'CFQ7TTC0K6L8', 'CFQ7TTC0KGQ8'].includes(game.id)) {
+    game.images.screenshot = null;
+  }
 
   return (
     <>

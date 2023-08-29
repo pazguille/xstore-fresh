@@ -32,9 +32,12 @@ export default function GameDetail({ game }) {
 
           {until ? <div class="game-deal-ends"><small>La oferta termina en {until} días.</small></div> : null}
 
-
-          <h4>Fecha de lanzamiento:</h4>
-          <time datetime={`${new Date(game.release_date).toLocaleString('es-AR')}`}> {new Date(game.release_date).toLocaleString('es-AR', { day: '2-digit' , month: '2-digit', year: 'numeric',  })}</time>
+          {game.release_date ?
+            <>
+              <h4>Fecha de lanzamiento:</h4>
+              <time datetime={`${new Date(game.release_date).toLocaleString('es-AR')}`}> {new Date(game.release_date).toLocaleString('es-AR', { day: '2-digit' , month: '2-digit', year: 'numeric',  })}</time>
+            </>
+          : null}
         </div>
 
         {Array.isArray(game.images.screenshot) ?
